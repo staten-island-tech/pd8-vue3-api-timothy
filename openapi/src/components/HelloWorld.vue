@@ -15,13 +15,14 @@ export default {
   components: { Bar },
   data: () => ({
     loaded: false,
-    chartData: null
+    chartData: []
   }),
   async mounted () {
     this.loaded = false
 
     try {
-      const data = await fetch("https://data.cityofnewyork.us/resource/qk7d-gecv.json")
+      const response = await fetch("https://data.cityofnewyork.us/resource/qk7d-gecv.json")
+      const data = await response.json()
       this.chartdata = data
 
       this.loaded = true
