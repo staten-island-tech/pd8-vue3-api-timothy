@@ -37,6 +37,7 @@ h3 {
 @media (min-width: 1024px) {
   .greetings h1,
   .greetings h3 {
+    color: #FF00FF;
     text-align: left;
   }
 }

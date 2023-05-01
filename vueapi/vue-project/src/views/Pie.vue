@@ -83,6 +83,7 @@ h2 {
 .pie {
   text-align: center;
   font-size: 35px;
+  color: #FF00FF;
 }
 
 </style>
