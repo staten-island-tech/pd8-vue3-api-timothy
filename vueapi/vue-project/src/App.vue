@@ -10,7 +10,7 @@ import Info from './components/Info.vue'
 
       <nav>
         <RouterLink to="/">Attendance Rate Per District</RouterLink>
-        <RouterLink to="/pie">Enrollment Rates for District 1 and District 31</RouterLink>
+        <RouterLink to="/pie">Enrollment Rates for Districts 1-32</RouterLink>
       </nav>
     </div>
   </header>
