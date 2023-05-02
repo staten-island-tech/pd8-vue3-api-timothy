@@ -5,7 +5,7 @@
     <input type="text" v-model="first" placeholder="Integer 1-32" class="search">
     <input type="text" v-model="second" placeholder="Integer 1-32" class="search">
     <br>
-    <button type="button" v-on:click="getChartData(), clearData()">Enter</button>
+    <button type="button" v-on:click="getNewData(), clearData()">Confirm</button>
     <div class="chart">
       <PieChart class="chart" v-if="gotData" :chartData="chartData" :chartOptions="chartOptions" />
     </div>
@@ -36,8 +36,34 @@ export default {
       gotData: false
     }
   },
+  mounted(){
+    this.showExample()
+  },
   methods: {
-    getChartData: async function () {
+    showExample: async function () {
+      this.gotData = false;
+      try {
+        let districts = []
+        let res = await fetch(
+          "https://data.cityofnewyork.us/resource/7z8d-msnt.json"
+        );
+        let data = await res.json();
+        console.log(data)
+        this.chartOptions.backgroundColor.push("#0000FF", "#FF0000");
+        data.forEach((district) => 
+        districts.push(district.ytd_enrollment_avg_)
+        )
+        console.log(districts)
+        this.chartData.labels.push("District 1")
+        this.chartData.labels.push("District 32")
+        this.chartData.datasets[0].data.push(districts[0])
+        this.chartData.datasets[0].data.push(districts[31])
+        this.gotData = true;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    getNewData: async function () {
       this.gotData = false
       try {
         let districts = []
